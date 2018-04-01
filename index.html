@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="master.css">
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors </title>
+  </head>
+  <body class="bg">
+    <div id="container">
+      <h2 id="head">What do you choose ?</h2>
+      <p id="txt">result wil be displayed here</p>
+      <button class= "btn" id="rock">Rock</button>
+      <button class= "btn" id="paper">Paper</button>
+      <button class= "btn" id="scissor">Scissors</button>
+
+    </div>
+
+
+
+
+    <script>
+      let player;
+      let computer;
+      let computerSelection;
+      let playerSelection;
+      let computerScore=0;
+      let playerScore=0;
+      let gameCount=0;
+
+
+      function computerPlay() {
+        let randomNumber = Math.floor(Math.random()*3 );
+            computer = randomNumber ;
+  	if (randomNumber === 0) {
+  		computer = "rock" ;
+    	} else if ((randomNumber === 1) ) {
+  		computer = "paper";
+  	} else {
+  		computer = "scissors"
+  	}
+      console.log("computer choose :" + computer);
+      return computer;
+      }
+
+
+      function userPlay() {
+        player = prompt("what do you choose to play rock,paper or scissor");
+        console.log("player choose :" + player);
+        return player;
+      }
+
+      function playRound(playerSelection, computerSelection) {
+          computerSelection= computerPlay();
+        if ((playerSelection.toLowerCase() == "rock"
+      		&&
+      		computerSelection == "rock")
+      		|| (playerSelection.toLowerCase() == "paper"
+      			&& computerSelection == "paper")
+      		|| (playerSelection.toLowerCase() == "scissors"
+      			&& computerSelection == "scissors")) {
+      			console.log("Same answers! It's a tie");
+            document.getElementById("txt").innerHTML ="Same answers! It's a tie";
+          }
+        else if (playerSelection.toLowerCase()  == "rock"
+      		&& computerSelection == "scissors") {
+      		console.log("Rock beats scissors! You win!");
+            document.getElementById("txt").innerHTML ="Rock beats scissors! You win!";
+      		playerScore++;
+          gameCount++;
+      	}
+      	else if (playerSelection.toLowerCase()  == "paper"
+      		&& computerSelection == "rock")  {
+      		console.log("Paper beats rock! You win!");
+          document.getElementById("txt").innerHTML ="Paper beats rock! You win!";
+      		playerScore++;
+          gameCount++;
+      	} else if (playerSelection.toLowerCase()  == "scissors"
+      		&& computerSelection == "paper"){
+      		console.log("Scissors beats paper! You win!");
+          document.getElementById("txt").innerHTML ="Scissors beats paper! You win!";
+      		playerScore++;
+          gameCount++;
+      	} else if (computerSelection  == "rock"
+      		&& playerSelection.toLowerCase() == "scissors") {
+      		console.log("Rock beats scissors! Computer wins!");
+          document.getElementById("txt").innerHTML ="Rock beats scissors! Computer wins!";
+          computerScore++;
+          gameCount++;
+      	}
+      	else if (computerSelection  == "paper"
+      		&& playerSelection.toLowerCase() == "rock")  {
+      		console.log("Paper beats rock! Computer wins!");
+          document.getElementById("txt").innerHTML ="Paper beats rock! Computer wins!";
+      		computerScore++;
+          gameCount++;
+      	} else if (computerSelection  == "scissors"
+      		&& playerSelection.toLowerCase() == "paper"){
+      		console.log("Scissors beats paper! Computer wins!" );
+          document.getElementById("txt").innerHTML ="Scissors beats paper! Computer wins!";
+      		computerScore++;
+          gameCount++;
+      	} else {
+      		console.log("You can't use that in this game...");
+          document.getElementById("txt").innerHTML ="You can't use that in this game...";
+        }
+      	}
+
+   // button actions
+   var rock = document.querySelector('#rock');
+   rock.addEventListener('click',()=>{playerSelection = "rock"; playRound(playerSelection, computerSelection);});
+   var paper = document.querySelector('#paper');
+   paper.addEventListener('click',()=>{playerSelection = "paper";playRound(playerSelection, computerSelection);});
+   var scissor = document.querySelector('#scissor');
+   scissor.addEventListener('click',()=>{playerSelection = "scissors";playRound(playerSelection, computerSelection);});
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+#container{
+  margin: 2rem auto;
+      text-align: center;
+}
+.bg {
+  background-image: url("game_image.png");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+#head{
+font-family: sans-serif;
+}
+#txt{
+  font-family: sans-serif;
+}
+
+.btn{
+  background-color:  #e7e7e7; color: black; /* Green */
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+
+}
